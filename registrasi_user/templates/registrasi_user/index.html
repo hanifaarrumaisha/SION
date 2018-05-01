@@ -1,0 +1,16 @@
+{% extends "login/layout/base.html" %}
+{% block content %}
+
+<div class="container">
+    {% include 'registrasi_user/role.html' %}
+
+    {% if role == sponsor %}
+        {% include 'registrasi_user/sponsor.html' %}
+    {% elif role == donatur %}
+        {% include 'registrasi_user/donatur.html' %}
+    {% elif role == relawan %}
+        {% include 'registrasi_user/relawan.html' %}
+    {% endif %}
+</div>
+
+{% endblock %}
