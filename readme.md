@@ -9,3 +9,6 @@ Initial:
 3. ketikkan python -m venv env
 4. ketikkan env\Scripts\activate.bat
 5. ketikkan pip install -r requirements.txt
+
+
+http://colorhunt.co/c/101436
