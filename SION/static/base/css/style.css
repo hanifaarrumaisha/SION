@@ -1,0 +1,41 @@
+#nama{
+	border:2px solid black;
+	padding-left:2px;
+	padding-right:2px;
+	float:left;
+	margin-top:4px;
+	margin-right:8px;
+	font-family: 'Pacifico', cursive;
+    }
+
+    .nav-link:active{
+        background-color:aliceblue;
+    }
+
+    #content{
+        padding-top: 50px;
+    }
+    
+    #nama:visited, #nama:link, #nama:hover{
+	    color:black;
+    }
+
+    .container{
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+  
+    .head{
+        padding-bottom:20px;
+    }
+
+    .subject{
+        font-size: 20px;
+        font-family: "Comic Sans MS";
+        color: #6650ff;
+    }
+    .value{
+        font-size: 20px;
+        font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+        color: #ff102c;
+    }
