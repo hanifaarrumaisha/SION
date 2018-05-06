@@ -16,9 +16,6 @@
         color: #FBFBFB;
     }
     
-    .nav-item{
-        font-size: 13px;
-    }
     .float-right{
         float: right;
     }
@@ -56,13 +53,6 @@ footer{
     position: fixed;
     bottom: 0px;
     width: 100%;
-    background-color: #756C83;
-    color: #fbfbfb;
-}
-
-.fa-bars{
-    color: white;
-    font-size: 25px;
 }
 
 #content{
@@ -71,12 +61,8 @@ footer{
 }
 
 .head{
-    padding-bottom:30px;
-    padding-top: 10px;
+    padding-bottom:40px;
     text-align: center;
-    text-shadow: 3px 3px #756C83;
-    color: #FBFBFB;
-
 }
 
 .btn-submit{

@@ -1,9 +1,22 @@
 .login-form{
     border:2px solid#756C83;
     border-radius: 10px;
-    margin-left:25%;
-    margin-right:25%;
     padding:30px;
+    background-color: #fbfbfb;
+}
+
+@media(min-width: 992px){
+    .login-form{
+        margin-left:25%;
+        margin-right:25%;
+    }
+}
+
+@media(max-width: 991px){
+    .login-form{
+        margin-left:30px;
+        margin-right:30px;
+    }
 }
 
 #no-account{
@@ -13,4 +26,8 @@
 #login-h3{
     text-align: center;
     padding-bottom: 20px;
+}
+
+body{
+    background: url("../../base/img/bg-purple.jpg")
 }
