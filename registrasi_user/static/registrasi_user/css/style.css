@@ -3,6 +3,7 @@
     margin: 0px 50px 40px 50px;
     border: 2px solid #756C83;
     background-color: #fbfbfb;
+    border-radius: 10px;
 }
 #dropdownMenuLink{
     background-color: #B9E1DC;
