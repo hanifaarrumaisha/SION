@@ -1,16 +1,31 @@
 {% extends "login/layout/base.html" %}
+
+{% load static %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'registrasi_user/css/style.css' %}" />
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
-    {% include 'registrasi_user/role.html' %}
+    <h3 class="head">
+        REGISTRASI USER
+    </h3>
+    <div class="form-regis">
+        {% include 'registrasi_user/role.html' %}
 
-    {% if role == sponsor %}
-        {% include 'registrasi_user/sponsor.html' %}
-    {% elif role == donatur %}
-        {% include 'registrasi_user/donatur.html' %}
-    {% elif role == relawan %}
-        {% include 'registrasi_user/relawan.html' %}
-    {% endif %}
+        {% if role == sponsor %}
+            {% include 'registrasi_user/user/sponsor.html' %}
+        {% elif role == donatur %}
+            {% include 'registrasi_user/user/donatur.html' %}
+        {% elif role == relawan %}
+            {% include 'registrasi_user/user/relawan.html' %}
+        {% endif %}
+
+    </div>
+
 </div>
 
 {% endblock %}

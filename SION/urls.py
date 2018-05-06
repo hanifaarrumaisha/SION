@@ -22,7 +22,7 @@ import registrasi_user.urls as registrasi_user
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/', include(login)),
-    url(r'^registrasi_user/', include(registrasi_user)),
+    url(r'^login/', include(login, namespace='login')),
+    url(r'^registrasi_user/', include(registrasi_user, namespace='registrasi-user')),
     url(r'^$', RedirectView.as_view(url="/login/", permanent="true"), name='index')
 ]

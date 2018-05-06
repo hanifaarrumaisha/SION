@@ -32,12 +32,14 @@
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary submit">Submit</button>
+          <div class="submit">
+              <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+          </div>
         </form>
     </div>
     <p id="no-account">
         Tidak punya akun? <br>
-        <a href="#">Registrasi User</a> atau <a href="#">Registrasi Organisasi</a>
+        <a href={% url 'registrasi-user:index' %}>Registrasi User</a> atau <a href="#">Registrasi Organisasi</a>
       </p>
   </div>
   

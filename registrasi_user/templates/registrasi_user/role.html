@@ -1,11 +1,18 @@
 <div class="dropdown show">
+    <p>
+        Pilih role mu:
+    </p>
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Pilih Role
+        {% if role %}
+            {{role}}
+        {% else %}
+            Pilih Role
+        {% endif %}
     </a>
     
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Sponsor</a>
-        <a class="dropdown-item" href="#">Donatur</a>
-        <a class="dropdown-item" href="#">Relawan</a>
+        <a class="dropdown-item" href={% url 'registrasi-user:regis-sponsor' %}>Sponsor</a>
+        <a class="dropdown-item" href={% url 'registrasi-user:regis-donatur' %}>Donatur</a>
+        <a class="dropdown-item" href={% url 'registrasi-user:regis-relawan' %}>Relawan</a>
     </div>
 </div>

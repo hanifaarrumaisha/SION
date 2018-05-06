@@ -1,13 +1,9 @@
 .login-form{
-    border:2px solid#B9E1DC;
+    border:2px solid#756C83;
     border-radius: 10px;
     margin-left:25%;
     margin-right:25%;
     padding:30px;
-}
-.head{
-    padding-bottom:20px;
-    text-align: center;
 }
 
 #no-account{
@@ -17,8 +13,4 @@
 #login-h3{
     text-align: center;
     padding-bottom: 20px;
-}
-
-.submit{
-    float: right;
 }

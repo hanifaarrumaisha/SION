@@ -1,5 +1,5 @@
 #nama{
-	border:2px solid black;
+	border:2px solid #FBFBFB;
 	padding-left:2px;
 	padding-right:2px;
 	float:left;
@@ -17,7 +17,7 @@
     }
     
     #nama:visited, #nama:link, #nama:hover{
-	    color:black;
+	    color:#FBFBFB;
     }
 
     .container{
@@ -36,3 +36,32 @@
         font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
         color: #ff102c;
     }
+
+.navbar{
+    background-color: #F38181 !important;
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+#content{
+    margin-bottom:30px;
+    
+}
+
+.head{
+    padding-bottom:40px;
+    text-align: center;
+}
+
+.btn-submit{
+    background-color:  #756C83;
+    color: white;
+}
+.submit{
+    justify-content: flex-end;
+    display: flex;
+}
