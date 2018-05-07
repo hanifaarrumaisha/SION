@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+Profil Organisasi
+{% endblock %}
+
+{% block css %}
+<style>
+/* CSS UNTUK BUTTON CREATE */
+.bg-box {
+  background: #f9f9f9;  /* fallback for old browsers */
+  -webkit-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  -moz-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  color: #333;
+  padding: 10px 10px;
+}
+
+
+
+/* CSS UNTUK Header di body*/
+
+.title-div {
+  background: #781E36;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #F38181, #FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #F38181, #FF5F5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  -moz-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  color: #f9f9f9;
+  margin-top: 40px;
+  min-height: 50px;
+  padding: 10px 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+.modal {
+  text-align: center;
+}
+.padding-content {
+  padding: 20px 25px;
+}
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+  .panel-satunya {
+    padding-top: 20px;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+
+}
+.modal-body {
+    position: relative;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+p {
+  color: #ffffff;
+
+}
+
+.content-box {
+  background: #f9feff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #F38181, ##FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #F38181, #FF5F5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #f9f9f9;
+  min-height: 300px;
+  border-radius: 10px;
+
+}
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="all-content">
+  <div class="container">
+    <div class="row">
+        <div class="title-div">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+               <h3>Lihat Profil Organisasi</h3>
+            </div>
+          </div>
+        </div>
+        <div class="bg-box">
+          <div class="row" style="padding: 30px 3px">
+            <div class="col-sm-12">
+              <div class="panel-heading">Daftar Organisasi</div>
+                <div class="panel-body">
+                  <a href="#organisasi" class="list-group-item" data-toggle="modal" data-target="#org-profile">Charitee</a>
+                  <a href="#" class="list-group-item">indodonate</a>
+                  <a href="#" class="list-group-item">kitasabi</a>
+                  <a href="#" class="list-group-item">Pedulikasih</a>
+                  <a href="#" class="list-group-item">Hope Indonesia</a>
+                  <a href="#" class="list-group-item">jarum foundation</a>
+                  <a href="#" class="list-group-item">Rumah Kita</a>
+                  <a href="#" class="list-group-item">yayasan Lontar</a>
+                  <a href="#" class="list-group-item">kalyanamitra</a>
+                  <a href="#" class="list-group-item">Papitek Serpong</a>
+                  <a href="#" class="list-group-item">Sahabat kita</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div id="org-profile" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="title-div">
+        <h4 class="modal-title">Profil Organisasi</h4>
+      </div>
+      <div class="bg-box">
+        <div class="padding-content">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <div class="content-box">
+                <div class="login-text-intro text-center">
+                  <img src="https://image.ibb.co/hKhfm7/charity_life_abstract_logo_1043_47.jpg" alt="charitee" class="img-circle profile-picture" style="width: 20%; object-fit:cover">
+                    <h3><b>Charitee</b></h3>
+                    <div class="data">
+                      <p>Website : www.charitee.org</p>
+                      <p>Email : admin@charitee.com </p>
+                      <P>Alamat : Jl. sudirman, Sumur bandung, Bandung, Jawa Barat 40928</P>
+                      <p>Tujuan Organisasi : melakukan kegiatan sosial</p>
+                      <p>pengurus-pengurus organisasi : </p>  
+                      <p>daftar donatur : </p>
+                      <p>daftar sponsor : </p>
+                      <p>total donasi terkumpul : </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-group">
+                  <div class="col-sm-4 col-sm-offset-2">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Pengurus organisasi</div>
+                      <div class="panel-body">
+                        <a href="#" class="list-group-item">arossetti9@cnbc.com</a>
+                        <a href="#" class="list-group-item">sriggollc@parallels.com</a>
+                        <a href="#" class="list-group-item">ldoorly12@aol.com</a>
+                        <a href="#" class="list-group-item">cmaudson1b@yandex.ru</a>
+                        <a href="#" class="list-group-item">criddoch26@bigcartel.com</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 ">
+                    <div class="panel panel-default ">
+                      <div class="panel-heading panel-satunya">Daftar Donatur dan Sponsor</div>
+                      <div class="panel-body">
+                        <a href="#" class="list-group-item">a</a>
+                        <a href="#" class="list-group-item">b</a>
+                        <a href="#" class="list-group-item">c</a>
+                        <a href="#" class="list-group-item">d</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

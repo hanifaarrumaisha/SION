@@ -1,0 +1,133 @@
+{% block css %}
+<style>
+#nama{
+  border:2px solid #FBFBFB;
+  padding-left:2px;
+  padding-right:2px;
+  float:left;
+  margin-top:4px;
+  margin-right:8px;
+  font-family: 'Pacifico', cursive;
+    }
+
+    .nav-link:active, .nav-link{
+        color:aliceblue;
+    }
+
+    .nav-link:hover{
+        color: #FBFBFB;
+    }
+    
+    .nav-item{
+        font-size: 13px;
+    }
+    .float-right{
+        float: right;
+    }
+
+    #content{
+        padding-top: 50px;
+    }
+    
+    #nama:visited, #nama:link, #nama:hover{
+      color:#FBFBFB;
+    }
+
+    .container{
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+
+    .subject{
+        font-size: 20px;
+        font-family: "Comic Sans MS";
+        color: #6650ff;
+    }
+    .value{
+        font-size: 20px;
+        font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+        color: #ff102c;
+    }
+
+.navbar{
+    background-color: #F38181 !important;
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #756C83;
+    color: #fbfbfb;
+}
+
+.fa-bars{
+    color: white;
+    font-size: 25px;
+}
+
+#content{
+    margin-bottom:30px;
+    
+}
+
+.head{
+    padding-bottom:30px;
+    padding-top: 10px;
+    text-align: center;
+    text-shadow: 3px 3px #756C83;
+    color: #FBFBFB;
+
+}
+
+.btn-submit{
+    background-color:  #756C83;
+    color: white;
+}
+.submit{
+    justify-content: flex-end;
+    display: flex;
+}
+</style>
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+    <div id="navbar-collapsed" class="collapse navbar-collapse float-xs-left">
+      <!-- <div class="navbar-brand">
+          <img src="#" alt="logo navbar">
+      </div> -->
+
+      <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
+      <ul class="nav navbar-nav float-xs-left">
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Profil</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Lihat Organisasi</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Berdonasi ke Organisasi</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Berdonasi ke Kegiatan</a>  
+        </li>
+      </ul> 
+      <div class="ml-auto">
+        <ul class="nav navbar-nav float-right" >
+         <li class="nav-item float-right">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Logout</a>  
+        </li>
+      </ul> 
+    </div> 
+
+</nav>
