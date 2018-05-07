@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'registrasi_user',
     'profil_organisasi',
     'donasi_organisasi',
+    'regis_organisasi',
+    'profil_user'
 ]
 
 MIDDLEWARE = [
