@@ -81,7 +81,8 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
+    float: left;
+    width: 50%;
 }
 
 input[type=submit]:hover {
@@ -108,8 +109,15 @@ input[type=submit]:hover {
     display: table;
     clear: both;
 }
-button{
-    background-color: red;
+.btn-close{
+    background-color: #DC143C;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -122,7 +130,7 @@ button{
 {% endblock %}
 
 {% block content %}
-<h2>Form Donasi</h2>
+<h2 style="color:white; text-align:center; font-weight:bold;">Form Donasi</h2>
 
 <div class="all-content">
   <div class="container">
@@ -178,7 +186,7 @@ button{
         </div>
         <div class="modal-footer">
         <input type="submit" value="Yes" >
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
