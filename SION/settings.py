@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'SION.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hanifaarrumaisha',                      
+        'NAME': 'lilaasfari',                      
         'USER': 'postgres',
-        'PASSWORD': 'calonskom2020',
+        'PASSWORD': 'piliang02',
         'HOST': 'localhost',
         'PORT': '5432',
     }
