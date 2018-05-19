@@ -18,11 +18,20 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 import login.urls as login
 import registrasi_user.urls as registrasi_user
+import profil_organisasi.urls as profil_organisasi
+import donasi_organisasi.urls as donasi_organisasi
+import profil_user as profil_user
+import regis_organisasi as regis_organisasi
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', include(login, namespace='login')),
     url(r'^registrasi_user/', include(registrasi_user, namespace='registrasi-user')),
-    url(r'^$', RedirectView.as_view(url="/login/", permanent="true"), name='index')
+    url(r'^profil_organisasi/', include(profil_organisasi, namespace='profil-organisasi')),
+    url(r'^donasi_organisasi/', include (donasi_organisasi, namespace='donasi-organisasi')),
+    url(r'^profil_user/', include(profil_organisasi, namespace='profil-user')),
+    url(r'^regis_organisasi/', include(profil_organisasi, namespace='regis-organisasi')),
+    url(r'^$', RedirectView.as_view(url="/login/", permanent="true"), name='index'),
+     
 ]

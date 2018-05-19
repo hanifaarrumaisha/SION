@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+Donasi ke Organisasi
+{% endblock %}
+
+{% block css %}
+<style>
+.bg-box {
+  background: #f9f9f9;  /* fallback for old browsers */
+  -webkit-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  -moz-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  color: #333;
+  padding: 10px 10px;
+}
+
+
+
+/* CSS UNTUK Header di body*/
+
+.title-div {
+  background: #781E36;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #F38181, #FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #F38181, #FF5F5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  -moz-box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+  color: #f9f9f9;
+  margin-top: 40px;
+  min-height: 50px;
+  padding: 10px 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+p {
+  color: black;
+
+}
+
+.content-box {
+  background: #f9feff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #F38181, ##FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #F38181, #FF5F5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #f9f9f9;
+  min-height: 300px;
+  border-radius: 10px;
+
+}
+
+.submit{
+    float: right;
+    justify-content: flex-end;
+    display: flex;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+    width: 50%;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.btn-close{
+    background-color: #DC143C;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h2 style="color:white; text-align:center; font-weight:bold;">Form Donasi</h2>
+
+<div class="all-content">
+  <div class="container">
+    <div class="row">
+        <div class="title-div">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+               <h3>Donasi ke organisasi</h3>
+            </div>
+          </div>
+        </div>
+        <div class="bg-box">
+          <div class="row" style="padding: 30px 3px">
+            <div class="col-sm-12">
+                <div class="container">
+                    <form action="/action_page.php">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <label for="organisasi">Organisasi</label>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <select id="organisasi" name="organisasi">
+                                    <option value="charitee">None</option>
+                                    <option value="charitee">Charitee</option>
+                                    <option value="kitasabi">Kitasabi</option>
+                                    <option value="jarum foundation">Jarum Foundation</option>
+                                </select>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="dana">Jumlah Dana</label>
+                        </div>
+                    <div class="col-md-9">
+                        <input type="text" id="dana" name="jmldana" placeholder="Masukkan jumlah dana">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+  <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg submit" data-toggle="modal" data-target="#myModal">Submit</button>
+
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Konfirmasi</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah anda benar ingin berdonasi sebesar Rp2.000.000,00 untuk organisasi ini?</p>
+        </div>
+        <div class="modal-footer">
+        <input type="submit" value="Yes" >
+          <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            </form>
+        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

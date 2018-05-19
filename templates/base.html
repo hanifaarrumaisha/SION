@@ -1,0 +1,60 @@
+{% load static %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% block meta %}
+    <!-- Title masing2 page bedaiin -->
+    {% endblock %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:300,400,600,700&amp;lang=en" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="  sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main1.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>
+      {% block title %}
+      <!-- Title masing2 page bedaiin -->
+      {% endblock %}
+    </title>
+      {% block css %}
+      <!-- CSS TAROH DI APPS MASING2 AJA YA BUAT NYESUAIIN -->
+      <style>
+
+      </style>
+      {% endblock %}
+</head>
+
+<body background ="https://preview.ibb.co/hqQsjS/tone_bawah.png" style="background-size: 100%">
+    <header>
+      {% include "partials/header.html" %}
+    </header>
+
+    <content>
+      {% block content %}
+
+      {% endblock %}
+    </content>
+
+    <footer>
+      {% include "partials/footer.html" %}
+    </footer>
+</body>
+{% block javascript %}
+<!-- Bootstrap n JQuery Script -->
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!-- BUAT NAMBAHIN SCRIPT -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});
+</script>
+{% endblock %}
+</html>
