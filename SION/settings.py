@@ -88,7 +88,7 @@ DATABASES = {
         'USER': 'db054',
         'PASSWORD': 'meeraeF2',
         'HOST': 'dbpg.cs.ui.ac.id',
-        'PORT': '8064',
+        'PORT': '',
     }
 }
 
