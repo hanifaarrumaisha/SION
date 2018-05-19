@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import index, regis_donatur, regis_relawan, regis_sponsor
+from .views import index 
 
 app_name='regis_organisasi'
 
