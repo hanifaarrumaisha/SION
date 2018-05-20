@@ -7,7 +7,8 @@ Provinsi: [Isian]
 Kode Pos: [Isian]
 Jalan/Desa/Keluarahan/No.Rumah: [Isian] -->
 
-<form action="{% url 'regis-organisasi:regis-donatur' %}>
+<form method="POST" action="{% url 'registrasi-user:regis-donatur' %}">
+    {% csrf_token %}
     <div class="form-row">
         {% include 'registrasi_user/user/user.html' %}
         <input type="hidden" name="role" value="donatur">
