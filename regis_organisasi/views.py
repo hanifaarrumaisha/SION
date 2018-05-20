@@ -23,14 +23,16 @@ def regis_organisasi_post(request):
     	response['nama_pengurus'] = request.POST['nama_pengurus']
     	response['email_pengurus'] = request.POST['email_pengurus']
     	response['alamat_pengurus'] = request.POST['alamat_pengurus']
+    	# response['role']=request.session['role']
+    	# response['user']=request.session['user']
 
     	cur=connection.cursor()
-    	cur.execute('SET SEARCH_PATH TO SION')
     	cur.execute('SELECT count(*) FROM ORGANISASI WHERE email_organisasi=%s AND nama=%s',(response['email'], response['nama']))
-    	if (cur.fetchone() == 0):
+    	all = cur.fetchone()
+    	if (all[0] == 0):
     		cur.execute('INSERT INTO ORGANISASI (email_organisasi,website,nama,provinsi,kabupaten_kota,kecamatan,kelurahan,kode_pos,status_verifikasi) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',(response['email'],response['web'],response['nama'],response['prov'],response['kab'],response['kec'],response['jln'],response['kodepos'],'terverifikasi'))
     		cur.execute('INSERT INTO "USER" (email, password, nama, alamat_lengkap) values (%s, %s, %s, %s)',(response['email_pengurus'], 'abc123', response['nama_pengurus'], response['alamat_pengurus']))
-    		cur.execute('INSERT INTO PENGURUS_ORGANISASI (email, organisasi) values (%s,%s)',(response['email_pengurus'],response['nama']))
+    		cur.execute('INSERT INTO PENGURUS_ORGANISASI (email, organisasi) values (%s,%s)',(response['email_pengurus'],response['email']))
     		connection.commit()
     		html ='fitur3.5.html'
     		return render(request, html, response)
