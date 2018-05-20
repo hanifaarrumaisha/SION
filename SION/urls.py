@@ -22,6 +22,7 @@ import profil_organisasi.urls as profil_organisasi
 import donasi_organisasi.urls as donasi_organisasi
 import profil_user as profil_user
 import regis_organisasi as regis_organisasi
+import logout.urls as logout
 
 
 urlpatterns = [
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^donasi_organisasi/', include (donasi_organisasi, namespace='donasi-organisasi')),
     url(r'^profil_user/', include(profil_organisasi, namespace='profil-user')),
     url(r'^regis_organisasi/', include(profil_organisasi, namespace='regis-organisasi')),
+    url(r'^logout/',  include(logout, namespace='logout')),
     url(r'^$', RedirectView.as_view(url="/login/", permanent="true"), name='index'),
      
 ]
