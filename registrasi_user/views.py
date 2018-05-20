@@ -61,44 +61,97 @@ def regis_user(request, email, password, name, alamat):
     # try:
     
     isValid=True
-    cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM SPONSOR WHERE email=%s);', (password, email))
+    # cur.execute('SELECT * FROM "USER"')
+    # print(cur.fetchall())
+    query='SELECT * FROM "USER" WHERE email IN (SELECT email FROM DONATUR WHERE email=%s)'
+    data=(email,)
+    cur.execute(query, data)
     getUser=dictfetchall(cur)
-    if(getUser):
+    print(getUser)
+    if(len(getUser)!=0):
+        print("masuk false")
         user=getUser[0]
         isValid=False
-        messages.error(request, "Username dan Password sudah ada")
+        messages.error(request, "Tidak dapat menggunakan username tersebut")
 
     if (isValid & (password!="") & (alamat!="")):
-        cur.execute("""INSERT INTO "USER" (email, password, nama, alamat_lengkap) VALUES(%s,%s,%s,%s)""", (email, password, name, alamat))
+        query= 'INSERT INTO "USER" (email, password, nama, alamat_lengkap) VALUES(%s,%s,%s,%s)'
+        data= (email, password, name, alamat)
+        cur.execute(query, data)
         connection.commit()
         print("commit regis")
-        cur.execute('SELECT * FROM "USER" WHERE nama=%s', (email))
+        query='SELECT * FROM "USER" WHERE nama=%s'
+        data=(email,)
+        cur.execute(query, data)
         print(cur.fetchone())
-    else:
+    elif (isValid & ((password=="") | (alamat==""))):
         messages.error(request, "Input tidak boleh ada yang kosong")
-    # except Exception as e:
-    #     messages.error(request, "Input tidak benar")
+    return isValid
 
 @csrf_protect
 def regis_donatur(request):
-    email=''
     print("masuk regis_donatur")
     if request.method == 'POST':
+        print("masuk post")
         email=request.POST['email']
         password=request.POST['password']
         nama = request.POST['name']
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
-        
-        regis_user(request, email, password, nama, alamat) 
 
-        cur.execute('INSERT INTO DONATUR (email, saldo) VALUES(%s,0)', (email))
-        connection.commit()
-        
-        cur.execute('SELECT * FROM DONATUR WHERE email=%s', (email))
-
-        request.session['user']=cur.fetchone()
-        request.session['role']='donatur'
-
-        messages.success(request, "Selamat! Kamu berhasil mendaftar.")
-    return HttpResponseRedirect(reverse('login:auth-login'))
+        if(regis_user(request, email, password, nama, alamat)): 
+            query = 'INSERT INTO DONATUR (email, saldo) VALUES(%s,0)'
+            data = (email,)
+            cur.execute(query, data)
+            connection.commit()
             
+            query='SELECT * FROM DONATUR WHERE email=%s'
+            cur.execute(query, data)
+
+            request.session['user']=dictfetchall(cur)
+            print(request.session['user'])
+            request.session['role']='donatur'
+
+            messages.success(request, "Selamat! Kamu berhasil mendaftar.")
+            return HttpResponseRedirect(reverse('login:auth-login'))
+        else:
+            return HttpResponseRedirect(reverse('registrasi-user:form-donatur'))
+
+@csrf_exempt
+def regis_sponsor(request):
+    print("----> Masuk regis_sponsor")
+    if request.method == 'POST':
+        print("masuk post")
+        email=request.POST['email']
+        password=request.POST['password']
+        nama = request.POST['name']
+        alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
+        logo=request.POST['logo']
+
+        if(regis_user(request, email, password, nama, alamat)): 
+            query = 'INSERT INTO SPONSOR (email, logo_sponsor) VALUES(%s, %s)'
+            data = (email, logo)
+            cur.execute(query, data)
+            connection.commit()
+
+            query='SELECT * FROM SPONSOR WHERE email=%s'
+            data=(email,)
+            cur.execute(query, data)
+
+            request.session['user']=dictfetchall(cur)
+            print(request.session['user'])
+            request.session['role']='sponsor'
+
+            messages.success(request, "Selamat! Kamu berhasil mendaftar.")
+            return HttpResponseRedirect(reverse('login:auth-login'))
+        else:
+            return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
+
+@csrf_exempt
+def regis_relawan(request):
+    print("----> Masuk regis_sponsor")
+    if request.method == 'POST':
+        print("masuk post")
+        email=request.POST['email']
+        password=request.POST['password']
+        nama = request.POST['name']
+        alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']

@@ -8,7 +8,8 @@ Kode Pos: [Isian]
 Jalan/Desa/Keluarahan/No.Rumah: [Isian]
 Logo: [Upload file] -->
 
-<form>
+<form method="POST" action="{% url 'registrasi-user:regis-sponsor' %}">
+    {% csrf_token %}
     <div class="form-row">
         {% include 'registrasi_user/user/user.html' %}    
         <input type="hidden" name="role" value="sponsor">   

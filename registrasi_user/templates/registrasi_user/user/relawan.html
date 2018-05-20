@@ -9,7 +9,8 @@ Jalan/Desa/Keluarahan/No.Rumah: [Isian]
 Tanggal Lahir: [Isian tanggal]
 Nomor Handphone: [Isian]
 Keahlian yang Dimiliki: [Isian] -->
-<form>
+<form method="POST" action="{% url 'registrasi-user:regis-relawan' %}">
+    {% csrf_token %}
     <div class="form-row">
         {% include 'registrasi_user/user/user.html' %}
         <input type="hidden" name="role" value="relawan">
