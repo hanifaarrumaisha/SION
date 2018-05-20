@@ -1,52 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #F38181 !important;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-  </button>
-    <div id="navbar-collapsed" class="collapse navbar-collapse float-xs-left">
-      <!-- <div class="navbar-brand">
-          <img src="#" alt="logo navbar">
-      </div> -->
-
-      <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
-      <ul class="nav navbar-nav float-xs-left">
-
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Profil</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Lihat Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Kegiatan</a>  
-        </li>
-      </ul> 
-      <div class="ml-auto">
-        <ul class="nav navbar-nav float-right" >
-         <li class="nav-item float-right">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Logout</a>  
-        </li>
-      </ul> 
-    </div> 
     <style>
       #nama{
-  border:2px solid #FBFBFB;
-  padding-left:2px;
-  padding-right:2px;
-  float:left;
-  margin-top:4px;
-  margin-right:8px;
-  font-family: 'Pacifico', cursive;
+        border:2px solid #FBFBFB;
+        padding-left:2px;
+        padding-right:2px;
+        float:left;
+        margin-top:4px;
+        margin-right:8px;
+        font-family: 'Pacifico', cursive;
     }
 
     .nav-link:active, .nav-link{
@@ -162,7 +125,44 @@
       }
     </style>
 </head>
-<body background="office.png" class="background" onload="myFunction()" style="background-size: 100%">
+<body background="templates/office.png" class="background" onload="myFunction()" style="background-size: 100%; background-image: url('../static/office.png')">
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #F38181 !important;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+    <div id="navbar-collapsed" class="collapse navbar-collapse float-xs-left">
+      <!-- <div class="navbar-brand">
+          <img src="#" alt="logo navbar">
+      </div> -->
+
+      <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
+      <ul class="nav navbar-nav float-xs-left">
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Profil</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Lihat Organisasi</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Berdonasi ke Organisasi</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Berdonasi ke Kegiatan</a>  
+        </li>
+      </ul> 
+      <div class="ml-auto">
+        <ul class="nav navbar-nav float-right" >
+         <li class="nav-item float-right">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            Logout</a>  
+        </li>
+      </ul> 
+    </div> 
   <div class="container">
     <header>
       <h1 style="text-align: center; color:#f38181; margin-top: 100px">VERIFYING.....</h1>

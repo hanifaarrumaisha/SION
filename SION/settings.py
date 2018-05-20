@@ -79,8 +79,13 @@ WSGI_APPLICATION = 'SION.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'intanwulandari61',                      
+        'USER': 'postgres',
+        'PASSWORD': 'iniwd98',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 # Password validation
