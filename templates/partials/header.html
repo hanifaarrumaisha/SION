@@ -1,13 +1,13 @@
 {% block css %}
 <style>
 #nama{
-  border:2px solid #FBFBFB;
-  padding-left:2px;
-  padding-right:2px;
-  float:left;
-  margin-top:4px;
-  margin-right:8px;
-  font-family: 'Pacifico', cursive;
+	border:2px solid #FBFBFB;
+	padding-left:2px;
+	padding-right:2px;
+	float:left;
+	margin-top:4px;
+	margin-right:8px;
+	font-family: 'Pacifico', cursive;
     }
 
     .nav-link:active, .nav-link{
@@ -30,7 +30,7 @@
     }
     
     #nama:visited, #nama:link, #nama:hover{
-      color:#FBFBFB;
+	    color:#FBFBFB;
     }
 
     .container{
@@ -85,6 +85,7 @@ footer{
     background-color:  #756C83;
     color: white;
 }
+
 .submit{
     justify-content: flex-end;
     display: flex;
@@ -102,22 +103,54 @@ footer{
       <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
       <ul class="nav navbar-nav float-xs-left">
 
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Profil</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Lihat Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Kegiatan</a>  
-        </li>
+        {% if (role==relawan | role==donatur) %}
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Profil</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Lihat Organisasi</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Berdonasi ke Organisasi</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Berdonasi ke Kegiatan</a>  
+            </li>
+        {% elif (role==sponsor) %}
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Profil</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Lihat Organisasi</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Berdonasi ke Organisasi</a>  
+            </li>
+        {% elif (role==pengurus) %}
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Profil</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Lihat Organisasi</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Buat Kegiatan</a>  
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+                Lihat Kegiatan</a>  
+            </li>
+        {% endif %}
       </ul> 
       <div class="ml-auto">
         <ul class="nav navbar-nav float-right" >
