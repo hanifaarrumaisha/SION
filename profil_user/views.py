@@ -10,9 +10,6 @@ def index(request):
 		'sponsor':'sponsor',
 		'donatur':'donatur'
 	}
-    if request.session['message']:
-        messages.success(request, request.session['message'])
-        request.session['message']=""
 	
     html='fitur4.html'
     return render(request, html, response)
