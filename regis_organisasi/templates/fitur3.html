@@ -3,6 +3,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+    #nama{
+        border:2px solid #FBFBFB;
+        padding-left:2px;
+        padding-right:2px;
+        float:left;
+        margin-top:4px;
+        margin-right:8px;
+        font-family: 'Pacifico', cursive;
+      }
+
+      .nav-link:active, .nav-link{
+          color:aliceblue;
+      }
+
+      .nav-link:hover{
+          color: #FBFBFB;
+      }
+      
+      .nav-item{
+          font-size: 13px;
+      }
+      .float-right{
+          float: right;
+      }
+
+      #content{
+          padding-top: 50px;
+      }
+      
+      #nama:visited, #nama:link, #nama:hover{
+        color:#FBFBFB;
+      }
+
+      .container{
+          padding-top:10px;
+          padding-bottom:10px;
+      }
+
+
+      .subject{
+          font-size: 20px;
+          font-family: "Comic Sans MS";
+          color: #6650ff;
+      }
+      .value{
+          font-size: 20px;
+          font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+          color: #ff102c;
+      }
+    </style>
 <title>Registrasi Organisasi dan Pengurus Organisasi</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,10 +101,11 @@
       <div class="ml-auto">
         <ul class="nav navbar-nav float-right" >
          <li class="nav-item float-right">
-          <a class="nav-link" data-toggle="dropdown" href="{% url 'logout:index' %}"" role="button" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
             Logout</a>  
-        </li>
-      </ul> 
+          </li>
+        </ul>
+      </div> 
     </div> 
 
   </nav>
@@ -104,7 +156,7 @@
           <input class="form-control" id="password" name='alamat_pengurus' required type="text"> 
           
           
-          <button onclick="location.href = url('../templates/fitur3.5');" class="button" name="submit" id="myBtn">
+          <button class="button" name="submit" id="myBtn">SUBMIT</button>
 
    </form> 
 </div>      

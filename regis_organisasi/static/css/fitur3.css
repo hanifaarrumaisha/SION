@@ -48,55 +48,6 @@ body{
 	color: #3a2127;
 	overflow-y: scroll;
 }
-#nama{
-      border:2px solid #FBFBFB;
-      padding-left:2px;
-      padding-right:2px;
-      float:left;
-      margin-top:4px;
-      margin-right:8px;
-      font-family: 'Pacifico', cursive;
-    }
-
-    .nav-link:active, .nav-link{
-        color:aliceblue;
-    }
-
-    .nav-link:hover{
-        color: #FBFBFB;
-    }
-    
-    .nav-item{
-        font-size: 13px;
-    }
-    .float-right{
-        float: right;
-    }
-
-    #content{
-        padding-top: 50px;
-    }
-    
-    #nama:visited, #nama:link, #nama:hover{
-      color:#FBFBFB;
-    }
-
-    .container{
-        padding-top:10px;
-        padding-bottom:10px;
-    }
-
-
-    .subject{
-        font-size: 20px;
-        font-family: "Comic Sans MS";
-        color: #6650ff;
-    }
-    .value{
-        font-size: 20px;
-        font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
-        color: #ff102c;
-    }
 a{
 	color: #333;
 	text-decoration: none;
@@ -213,4 +164,4 @@ a{
 .form input, textarea { background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(122, 192, 0, 0.15); padding: 7px; font-family: Keffeesatz, Arial; color: #4b4b4b; font-size: 14px; -webkit-border-radius: 5px; margin-bottom: 15px; margin-top: -10px; }
 .form input:focus, textarea:focus { border: 1px solid #ff5400; background-color: rgba(255, 255, 255, 1); }
 .myBtn{ background: #756C83; display: inline-block; padding: 5px 10px 6px; color: #fbf7f7; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
-.form input.button:hover;
+.form input.myBtn:hover;
