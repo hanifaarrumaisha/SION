@@ -1,0 +1,20 @@
+.form-regis{
+    padding: 20px;
+    margin: 0px 50px 40px 50px;
+    border: 2px solid #756C83;
+    background-color: #fbfbfb;
+    border-radius: 10px;
+}
+#dropdownMenuLink{
+    background-color: #B9E1DC;
+    color:black;
+    border-color:#B9E1DC;
+}
+
+body{
+    background: url("../../base/img/bg-purple.e1a24ade92a4.jpg")
+}
+
+.head{
+    padding-bottom:20px;
+}

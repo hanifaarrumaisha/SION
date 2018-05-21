@@ -20,10 +20,9 @@ import login.urls as login
 import registrasi_user.urls as registrasi_user
 import profil_organisasi.urls as profil_organisasi
 import donasi_organisasi.urls as donasi_organisasi
-import profil_user as profil_user
-import regis_organisasi as regis_organisasi
+import profil_user.urls as profil_user
+import regis_organisasi.urls as regis_organisasi
 import logout.urls as logout
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,8 +30,8 @@ urlpatterns = [
     url(r'^registrasi_user/', include(registrasi_user, namespace='registrasi-user')),
     url(r'^profil_organisasi/', include(profil_organisasi, namespace='profil-organisasi')),
     url(r'^donasi_organisasi/', include (donasi_organisasi, namespace='donasi-organisasi')),
-    url(r'^profil_user/', include(profil_organisasi, namespace='profil-user')),
-    url(r'^regis_organisasi/', include(profil_organisasi, namespace='regis-organisasi')),
+    url(r'^profil_user/', include(profil_user, namespace='profil-user')),
+    url(r'^regis_organisasi/', include(regis_organisasi, namespace='regis-organisasi')),
     url(r'^logout/',  include(logout, namespace='logout')),
     url(r'^$', RedirectView.as_view(url="/login/", permanent="true"), name='index'),
      

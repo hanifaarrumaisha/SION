@@ -15,7 +15,9 @@ def dictfetchall(cursor):
 
 # Create your views here.
 def index(request):
-    if 'user' in request.session:
+    if ('islogout' in request.session.keys()):
+        request.session.flush()
+    if 'user' in request.session.keys():
         return HttpResponseRedirect(reverse('profil-user:index'))
     else:
         html='login/index.html'
@@ -35,7 +37,7 @@ def auth_login(request):
         # Cek for Sponsor 
         cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM SPONSOR WHERE email=%s);', (password, username))
         getUser=dictfetchall(cur)
-        if(getUser):
+        if(len(getUser)!=0):
             user=getUser[0]
             request.session['role']='sponsor'
             isValid=True
@@ -44,8 +46,7 @@ def auth_login(request):
         if not(isValid):
             cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM DONATUR WHERE email=%s);', (password, username))
             getUser=dictfetchall(cur)
-
-            if(getUser):
+            if(len(getUser)!=0):
                 user=getUser[0]
                 request.session['role']='donatur'
                 isValid=True
@@ -53,11 +54,11 @@ def auth_login(request):
         # Cek for relawan 
         if not(isValid):
             cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM RELAWAN WHERE email=%s);', (password, username))
-            print(cur.fetchone())
             getUser=dictfetchall(cur)
+            print(getUser)
             print("relawan")
             print(getUser)
-            if(getUser):
+            if(len(getUser)!=0):
                 user=getUser[0]
                 request.session['role']='relawan'
                 isValid=True
@@ -66,7 +67,7 @@ def auth_login(request):
         if not(isValid):
             cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM pengurus_organisasi WHERE email=%s);', (password, username))
             getUser=dictfetchall(cur)
-            if(getUser):
+            if(len(getUser)!=0):
                 user=getUser[0]
                 request.session['role']='pengurus'
                 isValid=True
@@ -76,5 +77,5 @@ def auth_login(request):
         else:
             request.session['user'] = user
             print(request.session['user'])
-            messages.success(request, "Anda berhasil login")
+            request.session['message']="Anda berhasil login"
     return HttpResponseRedirect(reverse('login:index'))
