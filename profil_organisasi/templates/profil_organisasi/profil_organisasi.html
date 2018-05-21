@@ -104,83 +104,86 @@ p {
             <div class="col-sm-12">
               <div class="panel-heading">Daftar Organisasi</div>
                 <div class="panel-body">
-                  <a href="#organisasi" class="list-group-item" data-toggle="modal" data-target="#org-profile">Charitee</a>
-                  <a href="#" class="list-group-item">indodonate</a>
-                  <a href="#" class="list-group-item">kitasabi</a>
-                  <a href="#" class="list-group-item">Pedulikasih</a>
-                  <a href="#" class="list-group-item">Hope Indonesia</a>
-                  <a href="#" class="list-group-item">jarum foundation</a>
-                  <a href="#" class="list-group-item">Rumah Kita</a>
-                  <a href="#" class="list-group-item">yayasan Lontar</a>
-                  <a href="#" class="list-group-item">kalyanamitra</a>
-                  <a href="#" class="list-group-item">Papitek Serpong</a>
-                  <a href="#" class="list-group-item">Sahabat kita</a>
+                 
+                  {% for elem in organisasi %}
+                  <a href="#jjjjj" class="list-group-item" data-toggle="modal" data-target="#{{elem.kode_pos}}"> {{elem.nama}} </a>
+                  <div id="{{elem.kode_pos}}" class="modal fade" role="dialog">
+                   
+                   <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                      <div class="title-div">
+                        <h4 class="modal-title">Profil Organisasi</h4>
+                      </div>
+                      <div class="bg-box">
+                        <div class="padding-content">
+                          <div class="row">
+                           <div class="col-sm-8 col-sm-offset-2">
+                            <div class="content-box">
+                              <div class="login-text-intro text-center">
+                              <img src="https://image.ibb.co/hKhfm7/charity_life_abstract_logo_1043_47.jpg" alt="charitee" class="img-circle profile-picture" style="width: 20%; object-fit:cover">
+
+                              <h3><b>{{elem.nama}}</b></h3>
+                    
+                                <div class="data">
+                                  <p>Website : {{elem.website}}</p>
+                                  <p>Email : {{elem.email_organisasi}} </p>
+                                  <P>Alamat : Kelurahan {{elem.kelurahan}}, Kecamatan {{elem.kecamatan}}, {{elem.kabupaten_kota}}, {{elem.provinsi}} </P>
+                                  <p>Tujuan Organisasi : {{elem.tujuan}}</p>
+                                  {% for don in donasi_sponsor %}
+                                    {%if don.organisasi == elem.email_organisasi%}
+                                      <p>total donasi terkumpul : {{don.sum}}</p>
+                                    {% endif %}
+                                  {% endfor %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                              <div class="panel panel-default">
+                                <div class="panel-heading">Pengurus organisasi</div>
+                                  <div class="panel-body">
+                                    {% for orang in pengurus_org %}
+                                      {% if orang.organisasi == elem.email_organisasi %}
+                                        <a href="#" class="list-group-item"> {{orang.email}}</a>
+                                      {% endif %}
+                                    {% endfor %} 
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-4 ">
+                                <div class="panel panel-default ">
+                                  <div class="panel-heading panel-satunya">Daftar Donatur dan Sponsor</div>
+                                    <div class="panel-body">
+                                      {% for d in donatur_org %}
+                                        {% if d.organisasi == elem.email_organisasi %}
+                                          <a href="#" class="list-group-item"> {{d.donatur}}</a>
+                                        {% endif %}
+                                      {% endfor %}
+                                      {% for s in sponsor_org %}
+                                        {% if s.organisasi == elem.email_organisasi %}
+                                          <a href="#" class="list-group-item"> {{s.sponsor}}</a>
+                                        {% endif %}
+                                      {% endfor %}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  {% endfor %}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div id="org-profile" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
-
-      <!-- Modal content-->
-      <div class="title-div">
-        <h4 class="modal-title">Profil Organisasi</h4>
-      </div>
-      <div class="bg-box">
-        <div class="padding-content">
-          <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-              <div class="content-box">
-                <div class="login-text-intro text-center">
-                  <img src="https://image.ibb.co/hKhfm7/charity_life_abstract_logo_1043_47.jpg" alt="charitee" class="img-circle profile-picture" style="width: 20%; object-fit:cover">
-                    <h3><b>Charitee</b></h3>
-                    <div class="data">
-                      <p>Website : www.charitee.org</p>
-                      <p>Email : admin@charitee.com </p>
-                      <P>Alamat : Jl. sudirman, Sumur bandung, Bandung, Jawa Barat 40928</P>
-                      <p>Tujuan Organisasi : melakukan kegiatan sosial</p>
-                      <p>total donasi terkumpul : </p>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="panel-group">
-                  <div class="col-sm-4 col-sm-offset-2">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">Pengurus organisasi</div>
-                      <div class="panel-body">
-                        <a href="#" class="list-group-item">arossetti9@cnbc.com</a>
-                        <a href="#" class="list-group-item">sriggollc@parallels.com</a>
-                        <a href="#" class="list-group-item">ldoorly12@aol.com</a>
-                        <a href="#" class="list-group-item">cmaudson1b@yandex.ru</a>
-                        <a href="#" class="list-group-item">criddoch26@bigcartel.com</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 ">
-                    <div class="panel panel-default ">
-                      <div class="panel-heading panel-satunya">Daftar Donatur dan Sponsor</div>
-                      <div class="panel-body">
-                        <a href="#" class="list-group-item">a</a>
-                        <a href="#" class="list-group-item">b</a>
-                        <a href="#" class="list-group-item">c</a>
-                        <a href="#" class="list-group-item">d</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
 {% endblock %}
+s
