@@ -31,8 +31,8 @@ def auth_login(request):
         cur=connection.cursor()
         isValid=False
 
+        print("masuk")
         # Cek for Sponsor 
-        cur.execute('SET SEARCH_PATH to SION;')
         cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM SPONSOR WHERE email=%s);', (password, username))
         getUser=dictfetchall(cur)
         if(getUser):
@@ -44,6 +44,7 @@ def auth_login(request):
         if not(isValid):
             cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM DONATUR WHERE email=%s);', (password, username))
             getUser=dictfetchall(cur)
+
             if(getUser):
                 user=getUser[0]
                 request.session['role']='donatur'
@@ -76,4 +77,4 @@ def auth_login(request):
             request.session['user'] = user
             print(request.session['user'])
             messages.success(request, "Anda berhasil login")
-            return HttpResponseRedirect(reverse('login:index'))
+    return HttpResponseRedirect(reverse('login:index'))

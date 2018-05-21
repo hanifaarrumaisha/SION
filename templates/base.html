@@ -35,9 +35,20 @@
     </header>
 
     <content>
-      {% block content %}
-
-      {% endblock %}
+        <div>
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+            {% endfor %}
+    
+            {% block content %}
+            <!-- Your Content Here -->
+            {% endblock %}
+        </div>
     </content>
 
     <footer>

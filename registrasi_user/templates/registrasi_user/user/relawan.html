@@ -9,20 +9,22 @@ Jalan/Desa/Keluarahan/No.Rumah: [Isian]
 Tanggal Lahir: [Isian tanggal]
 Nomor Handphone: [Isian]
 Keahlian yang Dimiliki: [Isian] -->
-<form>
+<form method="POST" action="{% url 'registrasi-user:regis-relawan' %}">
+    {% csrf_token %}
     <div class="form-row">
         {% include 'registrasi_user/user/user.html' %}
+        <input type="hidden" name="role" value="relawan">
         <div class="form-group">
             <label for="tl-relawan">Tanggal Lahir</label>
-            <input type="date" class="form-control" id="tl-relawan" placeholder="Tanggal Lahir">
+            <input name='ttl' type="date" class="form-control" id="tl-relawan" placeholder="Tanggal Lahir">
         </div>
         <div class="form-group">
             <label for="nohp-relawan">Nomor Handphone</label>
-            <input type="text" class="form-control" id="nohp-relawan" placeholder="Nomor Handphone">
+            <input name='nohp' type="text" class="form-control" id="nohp-relawan" placeholder="Nomor Handphone">
         </div>
         <div class="form-group">
             <label for="keahlian-relawan">Keahlian</label>
-            <input type="text" class="form-control" id="keahlian-relawan" placeholder="Keahlian yang dimiliki...">
+            <input name='keahlian' type="text" class="form-control" id="keahlian-relawan" placeholder="Keahlian yang dimiliki...">
         </div>
         <div class="submit">
             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
