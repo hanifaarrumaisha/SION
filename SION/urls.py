@@ -20,8 +20,8 @@ import login.urls as login
 import registrasi_user.urls as registrasi_user
 import profil_organisasi.urls as profil_organisasi
 import donasi_organisasi.urls as donasi_organisasi
-import profil_user as profil_user
-import regis_organisasi as regis_organisasi
+import profil_user.urls as profil_user
+import regis_organisasi.urls as regis_organisasi
 import logout.urls as logout
 
 urlpatterns = [

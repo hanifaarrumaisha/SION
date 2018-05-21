@@ -22,7 +22,6 @@ buat instance cursor
 cur=connection.cursor()
 
 lakukan execute dari sql query apa aja
-cur.execute('SET SEARCH_PATH TO SION')
 cur.execute('SELECT * FROM DONATUR')
 one = cur.fetchone() 
 all = cur.fetchall()
