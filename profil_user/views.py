@@ -8,9 +8,9 @@ def index(request):
 	#CARI DIA DITABLE ROLE ITU PAKE 
 	response={
 		'role':request.session['role'],
-        'relawan':'Relawan',
-        'sponsor':'Sponsor',
-        'donatur':'Donatur'
+        'relawan':'relawan',
+        'sponsor':'sponsor',
+        'donatur':'donatur'
 	}
 	html='fitur4.html'
 	return render(request, html, response)
