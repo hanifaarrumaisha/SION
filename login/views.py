@@ -15,7 +15,7 @@ def dictfetchall(cursor):
 
 # Create your views here.
 def index(request):
-    if 'user' in request.session:
+    if 'user' in request.session.keys():
         return HttpResponseRedirect(reverse('profil-user:index'))
     else:
         html='login/index.html'
@@ -44,10 +44,6 @@ def auth_login(request):
         if not(isValid):
             cur.execute('SELECT * FROM "USER" WHERE password=%s AND email IN (SELECT email FROM DONATUR WHERE email=%s);', (password, username))
             getUser=dictfetchall(cur)
-<<<<<<< HEAD
-            print("masuk donatur")
-=======
->>>>>>> 6d81046764b000267178ec7aff65cce5009c0dfe
             if(getUser):
                 user=getUser[0]
                 request.session['role']='donatur'
