@@ -153,10 +153,17 @@ input[type=submit]:hover {
                             </div>
                             <div class="col-xs-12 col-md-9">
                                 <select id="organisasi" name="organisasi">
-                                    <option value="charitee">None</option>
-                                    <option value="charitee">Charitee</option>
-                                    <option value="kitasabi">Kitasabi</option>
-                                    <option value="jarum foundation">Jarum Foundation</option>
+                                <option value="None">None</option>
+                                {% for elem in organisasi %}
+                                
+                                <option value="{{elem.nama}}">{{elem.nama}}</option>
+                                {% endfor %}
+                  <!-- <a href="#organisasi" class="list-group-item" data-toggle="modal" data-target="#org-profile{{elem.email_organisasi}}"> {{elem.nama}} </a> -->
+               
+                                    <!-- <option value="charitee">None</option> -->
+                                    <!-- <option value="charitee">Charitee</option> -->
+                                    <!-- <option value="kitasabi">Kitasabi</option> -->
+                                    <!-- <option value="jarum foundation">Jarum Foundation</option> -->
                                 </select>
                             </div>
                         </div>
