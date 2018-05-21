@@ -1,9 +1,9 @@
 {% load static %} 
 {% load staticfiles %}
-
 <!DOCTYPE html>
 <html>
 <head>
+
     <style>
       #nama{
         border:2px solid #FBFBFB;
@@ -127,44 +127,7 @@
       }
     </style>
 </head>
-<body class="background" onload="myFunction()" style="background-size: 100%; background-image: url('../static/office.png')">
-    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #F38181 !important;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span><i class="fas fa-bars"></i></span>
-    </button>
-    <div id="navbar-collapsed" class="collapse navbar-collapse float-xs-left">
-      <!-- <div class="navbar-brand">
-          <img src="#" alt="logo navbar">
-      </div> -->
-
-      <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
-      <ul class="nav navbar-nav float-xs-left">
-
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Profil</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Lihat Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Organisasi</a>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Berdonasi ke Kegiatan</a>  
-        </li>
-      </ul> 
-      <div class="ml-auto">
-        <ul class="nav navbar-nav float-right" >
-          <li class="nav-item float-right">
-          <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-            Logout</a>  
-          </li>
-        </ul> 
-      </div> 
+<body background="templates/office.png" class="background" onload="myFunction()" style="background-size: 100%; background-image: url('../static/office.png')">
   <div class="container">
     <header>
       <h1 style="text-align: center; color:#f38181; margin-top: 100px">VERIFYING.....</h1>
@@ -173,10 +136,7 @@
     <div id="loader"></div>
 
     <div style="display:none;" id="myDiv" class="animate-bottom">
-      <h2>Organisasimu berhasil didaftarkan!</h2>
-      <p>No. Registrasi : ahdsr1243653716325</p>
-      <p>Email Pengurus : {{ email_pengurus }}</p>
-      <p>Password : abc123 </p>
+      <h1 style="color:#f38181">Organisasimu sudah pernah didaftarkan!</h1>
     </div>
 
     <script>
@@ -192,8 +152,8 @@
       }
     </script>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </body>
 </html>
