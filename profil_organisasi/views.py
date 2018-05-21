@@ -8,9 +8,14 @@ def index(request):
 	cur = connection.cursor()		
 	#cur.execute('SET SEARCH_PATH to SION;')
 	cur.execute('SELECT * FROM ORGANISASI O JOIN TUJUAN_ORGANISASI TU ON O.email_organisasi = TU.organisasi ')
-	response['organisasi'] = dictfetchall(cur)
-
 	
+	response={
+		'role':request.session['role'],
+        'relawan':'relawan',
+        'sponsor':'sponsor',
+        'donatur':'donatur'
+	}
+	response['organisasi'] = dictfetchall(cur)
 	cur.execute(' SELECT po.EMAIL, po.ORGANISASI FROM PENGURUS_ORGANISASI po, ORGANISASI o WHERE o.email_organisasi = po.organisasi')
 	response['pengurus_org']=dictfetchall(cur)
 

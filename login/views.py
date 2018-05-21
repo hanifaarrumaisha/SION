@@ -15,6 +15,8 @@ def dictfetchall(cursor):
 
 # Create your views here.
 def index(request):
+    if ('islogout' in request.session.keys()):
+        request.session.flush()
     if 'user' in request.session.keys():
         return HttpResponseRedirect(reverse('profil-user:index'))
     else:
@@ -75,5 +77,5 @@ def auth_login(request):
         else:
             request.session['user'] = user
             print(request.session['user'])
-            messages.success(request, "Anda berhasil login")
+            request.session['message']="Anda berhasil login"
     return HttpResponseRedirect(reverse('login:index'))

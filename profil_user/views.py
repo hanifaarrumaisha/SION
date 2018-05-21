@@ -1,16 +1,18 @@
 from django.shortcuts import render
+from django.contrib import messages
 
 response={}
 # Create your views here.
 def index(request):
-	#USER DETEKSI SIAPA YG LOGIN
-	#AMBIL ROLE
-	#CARI DIA DITABLE ROLE ITU PAKE 
-	response={
+    response={
 		'role':request.session['role'],
-        'relawan':'relawan',
-        'sponsor':'sponsor',
-        'donatur':'donatur'
+		'relawan':'relawan',
+		'sponsor':'sponsor',
+		'donatur':'donatur'
 	}
-	html='fitur4.html'
-	return render(request, html, response)
+    if request.session['message']:
+        messages.success(request, request.session['message'])
+        request.session['message']=""
+	
+    html='fitur4.html'
+    return render(request, html, response)

@@ -5,7 +5,13 @@ from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 def index(request):
     html='fitur3.html'
-    return render(request, html) 
+    response={
+		'role':request.session['role'],
+        'relawan':'relawan',
+        'sponsor':'sponsor',
+        'donatur':'donatur'
+	}
+    return render(request, html, response) 
 
 response={}
 @csrf_protect
