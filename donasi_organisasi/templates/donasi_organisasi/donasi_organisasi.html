@@ -16,11 +16,7 @@ Donasi ke Organisasi
   color: #333;
   padding: 10px 10px;
 }
-
-
-
 /* CSS UNTUK Header di body*/
-
 .title-div {
   background: #781E36;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #F38181, #FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
@@ -35,12 +31,9 @@ Donasi ke Organisasi
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
 p {
   color: black;
-
 }
-
 .content-box {
   background: #f9feff;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #F38181, ##FF5F5F);  /* Chrome 10-25, Safari 5.1-6 */
@@ -48,19 +41,15 @@ p {
   color: #f9f9f9;
   min-height: 300px;
   border-radius: 10px;
-
 }
-
 .submit{
     float: right;
     justify-content: flex-end;
     display: flex;
 }
-
 * {
     box-sizing: border-box;
 }
-
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -68,12 +57,10 @@ input[type=text], select, textarea {
     border-radius: 4px;
     resize: vertical;
 }
-
 label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -84,25 +71,19 @@ input[type=submit] {
     float: left;
     width: 50%;
 }
-
 input[type=submit]:hover {
     background-color: #45a049;
 }
-
-
-
 .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
 }
-
 .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
 }
-
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -117,7 +98,6 @@ input[type=submit]:hover {
     border-radius: 4px;
     cursor: pointer;
     width: 50%;
-
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -146,7 +126,8 @@ input[type=submit]:hover {
           <div class="row" style="padding: 30px 3px">
             <div class="col-sm-12">
                 <div class="container">
-                    <form action="/action_page.php">
+                    <form action= "{% url 'donasi-organisasi:donasi_organisasi_post' %}", method="POST">
+                    {% csrf_token %}
                         <div class="row">
                             <div class="col-xs-12 col-md-3">
                                 <label for="organisasi">Organisasi</label>
@@ -192,7 +173,7 @@ input[type=submit]:hover {
           <p>Apakah anda benar ingin berdonasi sebesar Rp2.000.000,00 untuk organisasi ini?</p>
         </div>
         <div class="modal-footer">
-        <input type="submit" value="Yes" >
+        <input type="submit" class="btn btn-info btn-lg submit" value="yes">
           <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Cancel</button>
         </div>
       </div>
