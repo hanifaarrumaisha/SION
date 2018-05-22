@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'thzw-f*q$lcbs=7zs@hw(8j)5ghfs_x50hpgx_s5%prx@(bvaa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['152.118.25.3']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,11 +81,11 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db054',                      
-        'USER': 'db054',
-        'PASSWORD': 'meeraeF2',
-        'HOST': 'dbpg.cs.ui.ac.id',
-        'PORT': ''
+        'NAME': 'hanifaarrumaisha',                      
+        'USER': 'postgres',
+        'PASSWORD': 'calonskom2020',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 # Password validation
