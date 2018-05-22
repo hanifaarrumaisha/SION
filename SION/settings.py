@@ -25,7 +25,7 @@ SECRET_KEY = 'thzw-f*q$lcbs=7zs@hw(8j)5ghfs_x50hpgx_s5%prx@(bvaa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [http://152.118.25.3:8604/]
 
 
 # Application definition
