@@ -1,11 +1,18 @@
 {% block css %}
 <style>
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+    color: #F38181;
+}
+
 #nama{
 	border:2px solid #FBFBFB;
 	padding-left:2px;
 	padding-right:2px;
 	float:left;
-	margin-top:4px;
+	margin-top:12px;
 	margin-right:8px;
 	font-family: 'Pacifico', cursive;
     }
@@ -90,89 +97,101 @@ footer{
     justify-content: flex-end;
     display: flex;
 }
+.btn-submit{
+    background-color:  #756C83;
+    color: white;
+}
+
+.submit{
+    justify-content: flex-end;
+    display: flex;
+}
 </style>
 {% endblock %}
 
 <nav class="navbar navbar-expand-lg fixed-top">
-    
     <div id="navbar-collapsed" class="collapse navbar-collapse float-xs-left">
-      <!-- <div class="navbar-brand">
-          <img src="#" alt="logo navbar">
-      </div> -->
+      
+        <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
 
-      <a id="nama" href={% url 'index' %} style="color: #FBFBFB">SION</a>
       <ul class="nav navbar-nav float-xs-left">
 
         {% if role == relawan %}
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-user:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Profil</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Lihat Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'donasi-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Berdonasi ke Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
                 Berdonasi ke Kegiatan</a>  
             </li>
         {% elif role == donatur %}
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-user:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Profil</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Lihat Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'donasi-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Berdonasi ke Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
                 Berdonasi ke Kegiatan</a>  
             </li>
         {% elif role == sponsor %}
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link"  href="{% url 'profil-user:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Profil</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Lihat Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'donasi-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Berdonasi ke Organisasi</a>  
             </li>
         {% elif role == pengurus %}
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
                 Profil</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="{% url 'profil-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
                 Lihat Organisasi</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
                 Buat Kegiatan</a>  
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
                 Lihat Kegiatan</a>  
             </li>
         {% endif %}
       </ul> 
       <div class="ml-auto">
         <ul class="nav navbar-nav float-right" >
+        {% if role != sponsor %}
+        <li class="nav-item float-right">
+        <a class="nav-link" href="{% url 'regis-organisasi:index' %}" role="button" aria-haspopup="true" aria-expanded="false">
+            Registrasi Organisasi</a>  
+        </li>
+        {% endif %}
          <li class="nav-item float-right">
-          <a class="nav-link" data-toggle="dropdown" href='logout/' role="button" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href='{% url "logout:index" %}' role="button" aria-haspopup="true" aria-expanded="false">
             Logout</a>  
         </li>
       </ul> 

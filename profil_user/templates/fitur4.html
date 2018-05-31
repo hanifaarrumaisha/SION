@@ -6,63 +6,16 @@
 <html>
 <head>
 
-    <style type="text/css">
-      #nama{
-        border:2px solid #FBFBFB;
-        padding-left:2px;
-        padding-right:2px;
-        float:left;
-        margin-top:4px;
-        margin-right:8px;
-        font-family: 'Pacifico', cursive;
-          }
-
-          .nav-link:active, .nav-link{
-              color:aliceblue;
-          }
-
-          .nav-link:hover{
-              color: #FBFBFB;
-          }
-          
-          .nav-item{
-              font-size: 13px;
-          }
-          .float-right{
-              float: right;
-          }
-
-          #content{
-              padding-top: 50px;
-          }
-          
-          #nama:visited, #nama:link, #nama:hover{
-            color:#FBFBFB;
-          }
-
-          .container{
-              padding-top:10px;
-              padding-bottom:10px;
-          }
-
-
-          .subject{
-              font-size: 20px;
-              font-family: "Comic Sans MS";
-              color: #6650ff;
-          }
-          .value{
-              font-size: 20px;
-              font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
-              color: #ff102c;
-          }
-
-          .navbar{
-              background-color: #F38181 !important;
-          }
-    </style>
 <title>Profil</title>    
+    {% block css %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    {% endblock %}
+    <style>
+        .alert{
+            margin-top:40px;
+            float: unset;
+        }
+    </style>
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -73,6 +26,14 @@
 <body class="background" style="background-size: 100%;background-image: url('../static/office.png')">
 {% include 'partials/header.html' %}
   <div class="container">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
     <header>
     <h1 style="text-align: center; color:#f38181; margin-top: 100px">PROFIL USER</h1>
       </header>
@@ -84,10 +45,12 @@
       <p style="text-align: center; color:#756c83">Jalan Sawo no.14 - Pondok Cina - Depok - Jawa Barat - 16426</p>
       <p style="text-align: center; color:#756c83">Saldo Donasi : 1.800.000</p>
       
+
     </div>
   </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 </html>

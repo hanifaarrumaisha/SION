@@ -77,5 +77,6 @@ def auth_login(request):
         else:
             request.session['user'] = user
             print(request.session['user'])
-            request.session['message']="Anda berhasil login"
+            request.session['first_view_profil']=True
+            print("login ", request.session['first_view_profil'])
     return HttpResponseRedirect(reverse('login:index'))
