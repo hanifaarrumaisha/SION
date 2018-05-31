@@ -64,12 +64,13 @@ def regis_user(request, email, password, name, alamat):
     isValid=True
     # cur.execute('SELECT * FROM "USER"')
     # print(cur.fetchall())
-    query='SELECT * FROM "USER" WHERE email IN (SELECT email FROM DONATUR WHERE email=%s)'
+    query='SELECT * FROM "USER" WHERE email=%s'
     data=(email,)
     cur.execute(query, data)
     getUser=dictfetchall(cur)
     print(getUser)
-    if(len(getUser)!=0):
+    
+    if (len(getUser)!=0):
         print("masuk false")
         user=getUser[0]
         isValid=False
@@ -79,9 +80,8 @@ def regis_user(request, email, password, name, alamat):
         query= 'INSERT INTO "USER" (email, password, nama, alamat_lengkap) VALUES(%s,%s,%s,%s)'
         data= (email, password, name, alamat)
         cur.execute(query, data)
-        connection.commit()
         print("commit regis")
-        query='SELECT * FROM "USER" WHERE nama=%s'
+        query='SELECT * FROM "USER" WHERE email=%s'
         data=(email,)
         cur.execute(query, data)
         print(cur.fetchone())
@@ -99,18 +99,19 @@ def regis_donatur(request):
         nama = request.POST['name']
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
 
-        if(regis_user(request, email, password, nama, alamat)): 
-            query = 'SELECT FROM DONATUR WHERE email="%s"'
+        if (regis_user(request, email, password, nama, alamat)): 
+            query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM DONATUR WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
             getUser=dictfetchall(cur)
             print("donatur udah ada: ",getUser)
-            if(len(getUser)!=0):
+            if (len(getUser)!=0):
                 print("masuk false")
                 user=getUser[0]
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
+                connection.commit()
                 query = 'INSERT INTO DONATUR (email, saldo) VALUES(%s,0)'
                 data = (email,)
                 cur.execute(query, data)
@@ -125,9 +126,7 @@ def regis_donatur(request):
 
                 messages.success(request, "Selamat! Kamu berhasil mendaftar.")
                 return HttpResponseRedirect(reverse('login:auth-login'))
-            return HttpResponseRedirect(reverse('registrasi-user:form-donatur'))
-        else:
-            return HttpResponseRedirect(reverse('registrasi-user:form-donatur'))
+    return HttpResponseRedirect(reverse('registrasi-user:form-donatur'))
 
 @csrf_exempt
 def regis_sponsor(request):
@@ -140,18 +139,19 @@ def regis_sponsor(request):
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
         logo=request.POST['logo']
 
-        if(regis_user(request, email, password, nama, alamat)): 
-            query = 'SELECT FROM SPONSOR WHERE email="%s"'
+        if (regis_user(request, email, password, nama, alamat)): 
+            query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM SPONSOR WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
             getUser=dictfetchall(cur)
             print("sponsor udah ada: ",getUser)
-            if(len(getUser)!=0):
+            if (len(getUser)!=0):
                 print("masuk false")
                 user=getUser[0]
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
+                connection.commit()
                 query = 'INSERT INTO SPONSOR (email, logo_sponsor) VALUES(%s, %s)'
                 data = (email, logo)
                 cur.execute(query, data)
@@ -185,9 +185,8 @@ def regis_relawan(request):
         ttl=request.POST['ttl']
         print(type(ttl))
         
-        print(ttl)
-        if(regis_user(request, email, password, nama, alamat)): 
-            query = 'SELECT FROM RELAWAN WHERE email=%s'
+        if (regis_user(request, email, password, nama, alamat)): 
+            query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM RELAWAN WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
             getUser=dictfetchall(cur)
@@ -198,6 +197,7 @@ def regis_relawan(request):
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
+                connection.commit()
                 query = 'INSERT INTO RELAWAN (email, no_hp, tanggal_lahir) VALUES(%s, %s, %s)'
                 data = (email, nohp, ttl)
                 cur.execute(query, data)
