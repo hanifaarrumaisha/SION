@@ -12,7 +12,8 @@ def index(request):
 		'role':request.session['role'],
 		'relawan':'relawan',
 		'sponsor':'sponsor',
-		'donatur':'donatur'
+		'donatur':'donatur',
+		'pengurus':'pengurus'
 	}
     html='fitur4.html'
     return render(request, html, response)
