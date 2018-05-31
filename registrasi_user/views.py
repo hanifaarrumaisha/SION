@@ -57,7 +57,20 @@ def form_relawan(request):
     }
     return render(request, html, context)
 
-def regis_user(request, email, password, name, alamat):
+def insert_user(email, password, name, alamat):
+        if ((password!="") & (alamat!="") & (name!="")):
+            query= 'INSERT INTO "USER" (email, password, nama, alamat_lengkap) VALUES(%s,%s,%s,%s)'
+            data= (email, password, name, alamat)
+            cur.execute(query, data)
+            print("commit regis")
+            query='SELECT * FROM "USER" WHERE email=%s'
+            data=(email,)
+            cur.execute(query, data)
+            print(cur.fetchone())
+        else:
+            messages.error(request, "Input tidak boleh ada yang kosong")
+
+def regis_user(request, email):
     print("masuk regis user")
     # try:
     
@@ -75,18 +88,6 @@ def regis_user(request, email, password, name, alamat):
         user=getUser[0]
         isValid=False
         messages.error(request, "Tidak dapat menggunakan username tersebut")
-
-    if (isValid & (password!="") & (alamat!="")):
-        query= 'INSERT INTO "USER" (email, password, nama, alamat_lengkap) VALUES(%s,%s,%s,%s)'
-        data= (email, password, name, alamat)
-        cur.execute(query, data)
-        print("commit regis")
-        query='SELECT * FROM "USER" WHERE email=%s'
-        data=(email,)
-        cur.execute(query, data)
-        print(cur.fetchone())
-    elif (isValid & ((password=="") | (alamat==""))):
-        messages.error(request, "Input tidak boleh ada yang kosong")
     return isValid
 
 @csrf_protect
@@ -99,7 +100,7 @@ def regis_donatur(request):
         nama = request.POST['name']
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
 
-        if (regis_user(request, email, password, nama, alamat)): 
+        if (regis_user(request, email)): 
             query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM DONATUR WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
@@ -111,6 +112,7 @@ def regis_donatur(request):
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
+                insert_user(email, password, nama, alamat)
                 connection.commit()
                 query = 'INSERT INTO DONATUR (email, saldo) VALUES(%s,0)'
                 data = (email,)
@@ -139,7 +141,7 @@ def regis_sponsor(request):
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
         logo=request.POST['logo']
 
-        if (regis_user(request, email, password, nama, alamat)): 
+        if (regis_user(request, email) & (logo!="")): 
             query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM SPONSOR WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
@@ -151,6 +153,7 @@ def regis_sponsor(request):
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
+                insert_user(email, password, nama, alamat)
                 connection.commit()
                 query = 'INSERT INTO SPONSOR (email, logo_sponsor) VALUES(%s, %s)'
                 data = (email, logo)
@@ -169,7 +172,7 @@ def regis_sponsor(request):
                 return HttpResponseRedirect(reverse('login:auth-login'))
         return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
     else:
-        messages.error(request,'Coba isi lagi deh hehe:)')
+        messages.error(request,'Gak boleh ada field yang kosong yaa')
         return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
 
 @csrf_exempt
@@ -183,9 +186,12 @@ def regis_relawan(request):
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
         nohp=request.POST['nohp']
         ttl=request.POST['ttl']
+        keahlian=request.POST['keahlian']
         print(type(ttl))
         
-        if (regis_user(request, email, password, nama, alamat)): 
+        isValid=regis_user(request, email)
+
+        if ( isValid & (nohp!="") & (ttl!="") & (keahlian!="")): 
             query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM RELAWAN WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
@@ -197,12 +203,17 @@ def regis_relawan(request):
                 messages.error(request, "Tidak dapat menggunakan username tersebut")
 
             else:
-                connection.commit()
+                insert_user(email, password, nama, alamat)
                 query = 'INSERT INTO RELAWAN (email, no_hp, tanggal_lahir) VALUES(%s, %s, %s)'
                 data = (email, nohp, ttl)
                 cur.execute(query, data)
                 connection.commit()
-
+                query = 'INSERT INTO KEAHLIAN_RELAWAN (email, keahlian) VALUES(%s, %s)'
+                data = (email, keahlian)
+                cur.execute(query, data)
+                connection.commit()
+                print("masuk relawan commit")
+                
                 query='SELECT * FROM RELAWAN WHERE email=%s'
                 data=(email,)
                 cur.execute(query, data)
@@ -213,7 +224,11 @@ def regis_relawan(request):
                 request.session['role']='relawan'
 
                 messages.success(request, "Selamat! Kamu berhasil mendaftar.")
+
                 return HttpResponseRedirect(reverse('login:auth-login'))
             return HttpResponseRedirect(reverse('registrasi-user:form-relawan'))
+        elif not(isValid):        
+            return HttpResponseRedirect(reverse('registrasi-user:form-relawan'))
         else:
+            messages.error(request,'Gak boleh ada field yang kosong yaa')
             return HttpResponseRedirect(reverse('registrasi-user:form-relawan'))

@@ -18,6 +18,8 @@ def index(request):
     if ('islogout' in request.session.keys()):
         request.session.flush()
     if 'user' in request.session.keys():
+        request.session['first_view_profil']=True
+        print("login ", request.session['first_view_profil'])
         return HttpResponseRedirect(reverse('profil-user:index'))
     else:
         html='login/index.html'
@@ -77,6 +79,5 @@ def auth_login(request):
         else:
             request.session['user'] = user
             print(request.session['user'])
-            request.session['first_view_profil']=True
-            print("login ", request.session['first_view_profil'])
+            
     return HttpResponseRedirect(reverse('login:index'))
