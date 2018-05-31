@@ -32,6 +32,13 @@ def dictfetchall(cursor):
 response={}
 @csrf_protect
 def donasi_organisasi_post(request):
+    response={
+      'role':request.session['role'],
+      'relawan':'relawan',
+      'sponsor':'sponsor',
+      'donatur':'donatur',
+      'pengurus':'pengurus'
+    }
     print('MASUK')
     if(request.method == 'POST'):
       organisasi = request.POST['organisasi']

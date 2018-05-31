@@ -13,7 +13,8 @@ def index(request):
 		'role':request.session['role'],
         'relawan':'relawan',
         'sponsor':'sponsor',
-        'donatur':'donatur'
+        'donatur':'donatur',
+		'pengurus':'pengurus'
 	}
 	response['organisasi'] = dictfetchall(cur)
 	cur.execute(' SELECT po.EMAIL, po.ORGANISASI FROM PENGURUS_ORGANISASI po, ORGANISASI o WHERE o.email_organisasi = po.organisasi')
