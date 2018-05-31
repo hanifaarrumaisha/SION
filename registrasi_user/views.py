@@ -141,7 +141,9 @@ def regis_sponsor(request):
         alamat=request.POST['alamat']+', '+request.POST['kecamatan']+', '+request.POST['kabupaten']+", "+request.POST['provinsi']+", "+request.POST['kodepos']
         logo=request.POST['logo']
 
-        if (regis_user(request, email) & (logo!="")): 
+        isValid=regis_user(request, email)
+
+        if (isValid & (logo!="")): 
             query = 'SELECT * FROM "USER" WHERE email IN (SELECT email FROM SPONSOR WHERE email=%s)'
             data = (email, )
             cur.execute(query, data)
@@ -170,8 +172,9 @@ def regis_sponsor(request):
 
                 messages.success(request, "Selamat! Kamu berhasil mendaftar.")
                 return HttpResponseRedirect(reverse('login:auth-login'))
-        return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
-    else:
+        elif not(isValid):
+            return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
+        
         messages.error(request,'Gak boleh ada field yang kosong yaa')
         return HttpResponseRedirect(reverse('registrasi-user:form-sponsor'))
 
